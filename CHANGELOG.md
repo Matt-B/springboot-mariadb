@@ -1,5 +1,5 @@
 # Changelog
 
-## [1.0.0] - 2023-10-30
+## [1.0.0] - 2024-05-30
 ### Added
-- Initial project
+- Initial project adapted from lydtechconsulting/springboot-postgres
