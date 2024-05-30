@@ -1,6 +1,6 @@
-# Spring Boot Demo With Postgres
+# Spring Boot Demo With MariaDB
 
-Spring Boot application demonstrating using Postgres as the datatabase for reading and writing records.
+Spring Boot application demonstrating using MariaDB as the datatabase for reading and writing records.
 
 Build Spring Boot application with Java 17:
 ```
@@ -14,7 +14,7 @@ docker-compose up -d
 
 Start Spring Boot application:
 ```
-java -jar target/springboot-postgres-1.0.0.jar
+java -jar target/springboot-mariadb-1.0.0.jar
 ```
 
 In a terminal window use curl to submit a POST REST request to the application to create an item:
@@ -80,7 +80,7 @@ docker-compose down
 
 ## Component Tests
 
-The test demonstrates the application reading and writing records to Postgres.
+The test demonstrates the application reading and writing records to MariaDB.
 
 For more on the component tests see: https://github.com/lydtechconsulting/component-test-framework
 
@@ -91,7 +91,7 @@ mvn clean install
 
 Build Docker container:
 ```
-docker build -t ct/springboot-postgres:latest .
+docker build -t ct/springboot-mariadb:latest .
 ```
 
 Run tests:

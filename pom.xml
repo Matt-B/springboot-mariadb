@@ -9,10 +9,10 @@
 		<relativePath/>
 	</parent>
 	<groupId>demo</groupId>
-	<artifactId>springboot-postgres</artifactId>
+	<artifactId>springboot-mariadb</artifactId>
 	<version>1.0.0</version>
-	<name>springboot-postgres</name>
-	<description>Spring Boot demo with Postgres</description>
+	<name>springboot-mariadb</name>
+	<description>Spring Boot demo with MariaDB</description>
 	<properties>
 		<java.version>17</java.version>
 		<maven.compiler.source>17</maven.compiler.source>
@@ -49,9 +49,12 @@
 			<version>9.16.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>42.3.1</version>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
 		</dependency>
 
 		<dependency>
@@ -63,7 +66,7 @@
 		<dependency>
 			<groupId>dev.lydtech</groupId>
 			<artifactId>component-test-framework</artifactId>
-			<version>2.6.0</version>
+			<version>3.1.0</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -112,14 +115,14 @@
 							<systemPropertyVariables>
 								<service.name>${project.name}</service.name>
 								<service.container.logging.enabled>false</service.container.logging.enabled>
-								<postgres.enabled>true</postgres.enabled>
-								<postgres.host.name>postgres</postgres.host.name>
-								<postgres.port>5432</postgres.port>
-								<postgres.database.name>test</postgres.database.name>
-								<postgres.schema.name>demo</postgres.schema.name>
-								<postgres.username>user</postgres.username>
-								<postgres.password>password</postgres.password>
-								<postgres.container.logging.enabled>false</postgres.container.logging.enabled>
+								<mariadb.enabled>true</mariadb.enabled>
+								<mariadb.image.tag>10.11</mariadb.image.tag>
+								<mariadb.host.name>mariadb</mariadb.host.name>
+								<mariadb.port>3306</mariadb.port>
+								<mariadb.database.name>demo</mariadb.database.name>
+								<mariadb.username>root</mariadb.username>
+								<mariadb.password>test</mariadb.password>
+								<mariadb.container.logging.enabled>false</mariadb.container.logging.enabled>
 							</systemPropertyVariables>
 						</configuration>
 					</plugin>

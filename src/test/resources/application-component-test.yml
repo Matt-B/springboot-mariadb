@@ -1,6 +1,6 @@
 ---
 spring:
   datasource:
-    url: jdbc:postgresql://postgres:5432/test?currentSchema=demo
-    username: user
-    password: password
+    url: jdbc:mariadb://mariadb:3306/demo?createDatabaseIfNotExist=true&autoReconnect=true&rewriteBatchedStatements=true
+    username: root
+    password: test

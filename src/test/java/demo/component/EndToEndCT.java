@@ -8,7 +8,7 @@ import java.util.UUID;
 import demo.rest.api.CreateItemRequest;
 import demo.rest.api.UpdateItemRequest;
 import demo.util.TestRestData;
-import dev.lydtech.component.framework.client.database.PostgresClient;
+import dev.lydtech.component.framework.client.database.MariaDbClient;
 import dev.lydtech.component.framework.client.service.ServiceClient;
 import dev.lydtech.component.framework.extension.ComponentTestExtension;
 import io.restassured.RestAssured;
@@ -39,12 +39,12 @@ public class EndToEndCT {
     public void setup() throws Exception {
         String serviceBaseUrl = ServiceClient.getInstance().getBaseUrl();
         RestAssured.baseURI = serviceBaseUrl;
-        dbConnection = PostgresClient.getInstance().getConnection("test", "demo", "user", "password");
+        dbConnection = MariaDbClient.getInstance().getConnection("demo", "root", "test");
     }
 
     @AfterEach
     public void tearDown() throws Exception {
-        PostgresClient.getInstance().close(dbConnection);
+        MariaDbClient.getInstance().close(dbConnection);
     }
 
 
@@ -75,11 +75,12 @@ public class EndToEndCT {
         // Ensure the name was updated.
         sendGetItemRequest(itemId, updateRequest.getName());
 
-        // Query the database directly to demonstrate using the PostgresClient utility class.
+        // Query the database directly to demonstrate using the MariaDbClient utility class.
         Statement statement = dbConnection.createStatement();
         ResultSet resultSet = statement.executeQuery("select * from item where name = '"+updateRequest.getName()+"'");
         assertThat(resultSet.next(), is(true));
         UUID result = (UUID)resultSet.getObject("id");
+        log.info("Result UUID: " + result);
         assert result != null;
 
         // Test the DELETE endpoint to delete the item.
